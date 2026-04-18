@@ -6,7 +6,7 @@ Progress on this project could have been done so much better in so many other wa
 
 Hopefully I can improve this into something new :)
 
-Code is taken from this godot series (part 1 and 2 at least)
+Code is taken from this godot series (part 1 and 2 at least) https://youtube.com/playlist?list=PLf33LknNIb2TO4L8aCxMPCCy8riT9plR8&si=o_sIGPBZALMposty
 
 Assets from: 
 - opengameart.org
