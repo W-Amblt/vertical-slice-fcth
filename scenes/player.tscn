@@ -1,39 +1,63 @@
 [gd_scene format=3 uid="uid://dqdn5cc7f68vv"]
 
-[ext_resource type="Texture2D" uid="uid://b7q536wnkw6la" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://br4ibsms2kgxg" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cikh5reytl1xy" path="res://scenes/components/gravity_component.tscn" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://dsxmg1ioapjlt" path="res://sprites/alice_idle.png" id="2_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://djc2dnbusyink" path="res://sprites/alice-walk3.png" id="3_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://d3mvsvex4aevd" path="res://scenes/components/input_component.tscn" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://b77r0jniducks" path="res://sprites/alice-walk2.png" id="4_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://dveuky2xhr4qy" path="res://sprites/alice-walk.png" id="5_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://xq6hsfx8c3j5" path="res://scenes/components/movement_component.tscn" id="5_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://bm8iqdu6x72v1" path="res://scenes/components/advanced_jump_component.tscn" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://dnibs24hlidrl" path="res://scenes/components/animation_component.tscn" id="10_y4r1p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3vyb7")
+"texture": ExtResource("2_tuyoq")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ur7pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y4r1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d2wvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y4r1p")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
-radius = 41.0
-height = 128.0
+radius = 11.0
+height = 60.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1523489469 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component")]
+[node name="Player" type="CharacterBody2D" unique_id=1523489469 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component")]
 script = ExtResource("1_qhqgy")
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 jump_component = NodePath("AdvancedJumpComponent")
+animation_component = NodePath("AnimationComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2016247047]
 sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.22510529
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1796218986]
+position = Vector2(-7, 3)
 shape = SubResource("CapsuleShape2D_qhqgy")
 
 [node name="GravityComponent" parent="." unique_id=1838521847 instance=ExtResource("2_g2els")]
@@ -43,3 +67,7 @@ shape = SubResource("CapsuleShape2D_qhqgy")
 [node name="MovementComponent" parent="." unique_id=1561919221 instance=ExtResource("5_qlg0r")]
 
 [node name="AdvancedJumpComponent" parent="." unique_id=1270850954 instance=ExtResource("6_tuyoq")]
+position = Vector2(2, 6)
+
+[node name="AnimationComponent" parent="." unique_id=240391916 node_paths=PackedStringArray("sprite") instance=ExtResource("10_y4r1p")]
+sprite = NodePath("../AnimatedSprite2D")
