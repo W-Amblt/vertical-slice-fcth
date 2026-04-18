@@ -5,3 +5,9 @@ This vertical slice is very, very barebones, but has some things implemented. Co
 Progress on this project could have been done so much better in so many other ways, but this is what I have to show.
 
 Hopefully I can improve this into something new :)
+
+Code is taken from this godot series (part 1 and 2 at least)
+
+Assets from: 
+- opengameart.org
+- my own (alice sprites)
